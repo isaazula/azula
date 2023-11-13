@@ -87,7 +87,7 @@ function handleMouseOut() {
       alt="Espanish"
     />
 
-    <img class="qr" src="/images/qr contact.png" alt="Contact" />
+    <img class="qr" src="/images/qr_contact.png" alt="Contact" />
   </header>
 </template>
 
