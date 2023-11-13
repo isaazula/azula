@@ -1,4 +1,9 @@
-<script setup></script>
+<script setup>
+import { useRoute, useRouter } from "vue-router";
+
+const route = useRoute();
+const router = useRouter();
+</script>
 
 <template>
   <footer>
@@ -21,7 +26,12 @@
       <h1>All rights reserved © 2023 | Isabella Azula Tovar</h1>
     </div>
 
-    <img class="logo item__3" src="/images/azula.svg" alt="Logo" />
+    <img
+      class="logo item__3"
+      @click="() => router.push({ name: 'home' })"
+      src="/images/azula.svg"
+      alt="Logo"
+    />
   </footer>
 </template>
 

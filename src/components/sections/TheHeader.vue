@@ -5,21 +5,6 @@ import { ref, computed } from "vue";
 const route = useRoute();
 const router = useRouter();
 
-const currentTheme = ref("dark");
-const btnText = ref("Light");
-
-function handleClick() {
-  if (currentTheme.value == "dark") {
-    document.documentElement.className = "light-theme";
-    currentTheme.value = "light";
-    btnText.value = "Dark";
-  } else {
-    document.documentElement.className = "";
-    currentTheme.value = "dark";
-    btnText.value = "Light";
-  }
-}
-
 const header_home = computed(() => {
   return route.path == "/" ? "header_home" : "";
 });
@@ -39,15 +24,8 @@ function handleMouseOut() {
     <img
       class="button"
       @click="handleClick"
-      src="/images/dark.svg"
-      alt="Dark Mode"
-    />
-
-    <img
-      class="button"
-      @click="handleClick"
-      src="/images/dark.svg"
-      alt=" Mode"
+      src="/images/contact.svg"
+      alt="Contact"
     />
 
     <div>
@@ -105,9 +83,11 @@ function handleMouseOut() {
     <img
       class="button"
       @click="handleClick"
-      src="/images/light.svg"
-      alt="Light Mode"
+      src="/images/es.svg"
+      alt="Espanish"
     />
+
+    <img class="qr" src="/images/qr contact.png" alt="Contact" />
   </header>
 </template>
 
@@ -149,6 +129,12 @@ header {
   width: 33px;
   opacity: 100%;
   cursor: pointer;
+}
+
+.qr {
+  width: 200px;
+  margin-left: 170px;
+  border-radius: 0px !important;
 }
 
 p {
