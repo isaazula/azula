@@ -19,7 +19,10 @@ const router = useRouter();
         }
       "
     >
-      <source src="@/assets/videos/second.mp4" type="video/mp4" />
+      <source
+        src="https://firebasestorage.googleapis.com/v0/b/koftafusion.appspot.com/o/videos_isa%2Fsecond.mp4?alt=media&token=afb82339-b035-4c96-9bb1-9b7bf70aea02"
+        type="video/mp4"
+      />
     </video>
 
     <video
@@ -38,7 +41,10 @@ const router = useRouter();
         }
       "
     >
-      <source src="@/assets/videos/third.mp4" type="video/mp4" />
+      <source
+        src="https://firebasestorage.googleapis.com/v0/b/koftafusion.appspot.com/o/videos_isa%2Fthird.mp4?alt=media&token=81782524-7335-4216-a0f0-0c3f4abb7e37"
+        type="video/mp4"
+      />
     </video>
 
     <video
@@ -57,7 +63,10 @@ const router = useRouter();
         }
       "
     >
-      <source src="@/assets/videos/first.mp4" type="video/mp4" />
+      <source
+        src="https://firebasestorage.googleapis.com/v0/b/koftafusion.appspot.com/o/videos_isa%2Ffirst.mp4?alt=media&token=8959d4ef-23ff-481e-88ad-4843105e0691"
+        type="video/mp4"
+      />
     </video>
   </section>
 </template>
