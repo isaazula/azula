@@ -23,7 +23,7 @@ const router = useRouter();
     </div>
 
     <div class="footer__copy item__2">
-      <h1>All rights reserved © 2023 | Isabella Azula Tovar</h1>
+      <h1>{{ $t("allRightsReserved") }} © 2023 | Isabella Azula Tovar</h1>
     </div>
 
     <img

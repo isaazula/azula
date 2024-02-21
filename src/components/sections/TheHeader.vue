@@ -2,6 +2,9 @@
 import { useRoute, useRouter } from "vue-router";
 import { ref, computed } from "vue";
 
+import { useTranslation } from "i18next-vue";
+const { t, i18next } = useTranslation();
+
 const route = useRoute();
 const router = useRouter();
 
@@ -17,6 +20,26 @@ function handleMouseIn() {
 function handleMouseOut() {
   showNav.value = "none";
 }
+
+const lang = ref("en");
+
+const imageSrc = computed(() => {
+  const image = lang.value === "en" ? "us" : "es";
+  console.log("i", image);
+  return `/images/${image}.svg`;
+});
+
+function handleClickLang() {
+  const currentLanguage = i18next.language;
+  const newLanguage = currentLanguage === "en" ? "es" : "en";
+  i18next.changeLanguage(newLanguage);
+  lang.value = newLanguage;
+}
+
+function handleClick() {
+  const qr = document.querySelector(".qr");
+  qr.style.left = qr.style.left === "50px" ? "-200px" : "50px";
+}
 </script>
 
 <template>
@@ -29,62 +52,66 @@ function handleMouseOut() {
     />
 
     <div>
-      <h1 @click="() => router.push({ name: 'about' })">About me</h1>
+      <h1 @click="() => router.push({ name: 'about' })">
+        {{ $t("about") }}
+      </h1>
     </div>
     <div>
       <p @click="() => router.push({ name: 'home' })">AZULA</p>
     </div>
-    <h1 id="menu__button" @mouseenter="handleMouseIn" @click="handleMouseOut">
-      My projects
-    </h1>
-    <nav id="nav__small" :class="showNav" @mouseleave="handleMouseOut">
-      <p
-        @click="
-          () => {
-            router.push({
-              name: 'gallery',
-              params: { category: 'photography' },
-            });
-          }
-        "
-        class="text__nav"
-      >
-        Photographs & Audiovisual Content
-      </p>
+    <div id="my_projects_cont">
+      <h1 id="menu__button" @mouseenter="handleMouseIn" @click="handleMouseOut">
+        {{ $t("myProjects") }}
+      </h1>
+      <nav id="nav__small" :class="showNav" @mouseleave="handleMouseOut">
+        <p
+          @click="
+            () => {
+              router.push({
+                name: 'gallery',
+                params: { category: 'photography' },
+              });
+            }
+          "
+          class="text__nav"
+        >
+          {{ $t("photographsAudiovisualContent") }}
+        </p>
 
-      <p
-        @click="
-          () => {
-            router.push({
-              name: 'gallery',
-              params: { category: 'illustration' },
-            });
-          }
-        "
-        class="text__nav"
-      >
-        Branding, Packaging & Illustrations
-      </p>
-      <p
-        @click="
-          () => {
-            router.push({
-              name: 'gallery',
-              params: { category: 'animation' },
-            });
-          }
-        "
-        class="text__nav"
-      >
-        3D Modelling & Animations
-      </p>
-    </nav>
+        <p
+          @click="
+            () => {
+              router.push({
+                name: 'gallery',
+                params: { category: 'illustration' },
+              });
+            }
+          "
+          class="text__nav"
+        >
+          {{ $t("brandingPackagingIllustrations") }}
+        </p>
+        <p
+          @click="
+            () => {
+              router.push({
+                name: 'gallery',
+                params: { category: 'animation' },
+              });
+            }
+          "
+          class="text__nav"
+        >
+          {{ $t("threeDModellingAnimations") }}
+        </p>
+      </nav>
+    </div>
 
     <img
       class="button"
-      @click="handleClick"
-      src="/images/es.svg"
-      alt="Espanish"
+      @click="handleClickLang"
+      :src="imageSrc"
+      alt="Language Button"
     />
 
     <img class="qr" src="/images/qr_contact.png" alt="Contact" />
@@ -132,9 +159,12 @@ header {
 }
 
 .qr {
+  position: absolute;
   width: 200px;
-  margin-left: 170px;
+  top: 100px;
+  left: -200px;
   border-radius: 0px !important;
+  transition: all 1s;
 }
 
 p {
@@ -153,6 +183,9 @@ h1 {
   color: var(--color-white);
 }
 
+#my_projects_cont {
+}
+
 nav {
   display: flex;
   background: linear-gradient(var(--primary-first), 55%, var(--primary-third));
@@ -166,14 +199,15 @@ nav {
   z-index: 8 !important;
   position: absolute;
   top: -400px;
-  right: 242px;
+  right: -30px;
+  padding-top: 15px;
   transition: all 1s;
   color: var(--primary-third);
   opacity: 0;
 }
 
 nav.show {
-  top: 85px;
+  top: 35px;
   opacity: 1;
 }
 

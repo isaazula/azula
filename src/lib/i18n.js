@@ -1,20 +1,7 @@
-import "./assets/main.css";
-
-import { createApp } from "vue";
-import { createPinia } from "pinia";
-
-import i18next from "i18next";
-import I18NextVue from "i18next-vue";
-import LanguageDetector from "i18next-browser-languagedetector";
-import translations from "./lib/i18n";
-
-import App from "./App.vue";
-import router from "./router";
-
-i18next.use(LanguageDetector).init({
+const translations = {
   debug: true,
-  fallbackLng: "en",
-  locale: "en",
+  fallbackLng: "es",
+  locale: "es",
   resources: {
     en: {
       translation: {
@@ -37,12 +24,6 @@ i18next.use(LanguageDetector).init({
       },
     },
   },
-});
+};
 
-const app = createApp(App);
-
-app.use(I18NextVue, { i18next });
-app.use(createPinia());
-app.use(router);
-
-app.mount("#app");
+export default translations;
